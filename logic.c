@@ -65,6 +65,9 @@ void win(short *score){
 void game(){
 	short gunta[14], in, score[] = {0, 0};
 	for(short i = 0; i < 14; i++) gunta[i] = 5;
+	//gunta[3] = 1;
+	//gunta[8] = 1;
+	//gunta[12] = 1;
 	for(short mov = 0; !is_over(turn(mov), gunta, score); mov++){
 		if(mov % 2 == 0){
 			printf("Score of 0 is %d\t\t", score[0]);
@@ -74,10 +77,12 @@ void game(){
 			distribute(gunta, in, score, turn(mov));
 		}
 		else{
+			display(gunta);
 			printf("\n\n\n\n\\n\n\n\n");
 			in = minmax(gunta, 0, turn(mov), score);
-			scanf("%hd", &in);
+			if(gunta[in] == 0){printf("glitchy\n"); break;}
 			distribute(gunta, in, score, turn(mov));
+			printf("%d\n", in);
 		}
 	}
 	win(score);
