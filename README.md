@@ -1,2 +1,2 @@
 # omanaguntalu
-Ancient Indian game with computer mode.
+An ancient Indian game with computer mode.
